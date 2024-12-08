@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  WORKING_DIRECTORY: application
+  WORKING_DIRECTORY: .
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: application/package.json
+          node-version-file: package.json
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
       - name: Install Node Dependencies
@@ -35,7 +35,6 @@ jobs:
       - name: Upload Documents
         uses: actions/upload-pages-artifact@v3
         with:
-          # 絶対パスを指定
           path: ${{ env.WORKING_DIRECTORY }}/storybook-static
 
   # GitHub Pagesにアーティファクトをデプロイ
