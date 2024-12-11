@@ -27,6 +27,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check if token exists
+        run: |
+          if [ -n "${{ secrets.CHROMATIC_PROJECT_TOKEN }}" ]; then
+            echo "Chromatic token is set"
+          else
+            echo "Chromatic token is not set"
+          fi
+
       - name: Run Chromatic
         uses: chromaui/action@latest
         with:
