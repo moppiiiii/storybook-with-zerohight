@@ -79,6 +79,9 @@ devDependencies:
   vite:
     specifier: ^6.0.1
     version: 6.0.3
+  vite-plugin-turbosnap:
+    specifier: ^1.0.3
+    version: 1.0.3
 
 packages:
 
@@ -2962,6 +2965,10 @@ packages:
   /uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
+    dev: true
+
+  /vite-plugin-turbosnap@1.0.3:
+    resolution: {integrity: sha512-p4D8CFVhZS412SyQX125qxyzOgIFouwOcvjZWk6bQbNPR1wtaEzFT6jZxAjf1dejlGqa6fqHcuCvQea6EWUkUA==}
     dev: true
 
   /vite@6.0.3:
