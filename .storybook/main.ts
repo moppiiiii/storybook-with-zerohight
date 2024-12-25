@@ -1,16 +1,9 @@
 import type { StorybookConfig } from "@storybook/react-vite";
+import turbosnap from "vite-plugin-turbosnap";
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  refs: {
-    // 👇 Upper-case characters not supported in the refs key
-    "chromatic-published-storybook": {
-      // The title of your Storybook
-      title: "Design System Sample",
-      // The url provided by Chromatic when it was published
-      url: "https://moppiiiiis-components.chromatic.com",
-    },
-  },
   addons: [
     "@storybook/addon-onboarding",
     "@storybook/addon-essentials",
@@ -20,6 +13,19 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/react-vite",
     options: {},
+  },
+  async viteFinal(config, { configType }) {
+    return mergeConfig(config, {
+      plugins:
+        configType === "PRODUCTION"
+          ? [
+              turbosnap({
+                // This should be the base path of your storybook.  In monorepos, you may only need process.cwd().
+                rootDir: config.root ?? import.meta.url,
+              }),
+            ]
+          : [],
+    });
   },
 };
 export default config;
