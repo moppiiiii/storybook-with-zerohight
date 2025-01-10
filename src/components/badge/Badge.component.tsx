@@ -14,18 +14,23 @@ const BadgeComponent: React.FC<BadgeComponentProps> = ({
 	let padding = "0 4px";
 	let badgeHeight = 22;
 	let fontSize = 9;
+	let borderRadius = 10;
 
 	switch (size) {
 		case "sm":
-			padding = "0";
+			padding = "0 4px";
 			badgeHeight = 14;
 			fontSize = 6;
+			borderRadius = 2;
 			break;
 		case "md":
+			padding = "0 4px";
+			borderRadius = 10;
 			badgeHeight = 22;
 			fontSize = 12;
 			break;
 		case "lg":
+			padding = "0 4px";
 			badgeHeight = 30;
 			fontSize = 16;
 			break;
@@ -42,7 +47,7 @@ const BadgeComponent: React.FC<BadgeComponentProps> = ({
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
-					borderRadius: "50%",
+					borderRadius
 				},
 			}}
 			badgeContent={badgeContent}
