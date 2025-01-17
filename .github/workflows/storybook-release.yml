@@ -10,25 +10,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          # Shallow clone ではなく、完全なコミット履歴を取得
+          fetch-depth: 0
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: latest
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          # Node バージョンを package.json から読み込みたい場合
           node-version-file: package.json
           cache: 'pnpm'
           cache-dependency-path: '**/pnpm-lock.yaml'
+
       - name: Install Node Dependencies
         run: pnpm install --frozen-lockfile
 
-      # Storybookのビルド
+      # Storybook のビルド
       - name: Build storybook
         run: pnpm run build-storybook
 
-      # Chromaticへのアップロード
+      # Chromatic へのアップロード
       - name: Publish storybook to Chromatic
         uses: chromaui/action@latest
         with:
