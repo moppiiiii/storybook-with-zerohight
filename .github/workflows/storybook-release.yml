@@ -1,20 +1,13 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy Storybook to Chromatic
 
 on:
   push:
     branches:
-      - develop
       - main
 
-env:
-  WORKING_DIRECTORY: .
-
 jobs:
-  build:
+  chromatic:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ env.WORKING_DIRECTORY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,24 +23,14 @@ jobs:
           cache-dependency-path: '**/pnpm-lock.yaml'
       - name: Install Node Dependencies
         run: pnpm install --frozen-lockfile
+
+      # Storybookのビルド
       - name: Build storybook
         run: pnpm run build-storybook
-      - name: Upload Documents
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.WORKING_DIRECTORY }}/storybook-static
 
-  # GitHub Pagesにアーティファクトをデプロイ
-  # deploy-pagesアクションのみに必要な権限を付与するため、別のジョブとして定義
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      # Chromaticへのアップロード
+      - name: Publish storybook to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
