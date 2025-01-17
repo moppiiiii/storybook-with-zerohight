@@ -63,7 +63,7 @@ export const Standard: Story = {
 	args: {
 		children: "Standard Button",
 		variant: "contained",
-		color: "secondary",
+		color: "success",
 	},
 };
 
