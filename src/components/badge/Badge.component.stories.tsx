@@ -22,7 +22,6 @@ export const Default: Story = {
 export const OverMax: Story = {
 	args: {
 		children: "Badge",
-		max: 999,
 		badgeContent: 1000,
 	},
 };

@@ -11,6 +11,9 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.14.0
     version: 11.14.0(@emotion/react@11.14.0)(@types/react@18.3.18)(react@18.3.1)
+  '@fontsource/noto-sans':
+    specifier: ^5.1.1
+    version: 5.1.1
   '@fontsource/roboto':
     specifier: ^5.1.1
     version: 5.1.1
@@ -781,6 +784,10 @@ packages:
       '@eslint/core': 0.11.0
       levn: 0.4.1
     dev: true
+
+  /@fontsource/noto-sans@5.1.1:
+    resolution: {integrity: sha512-WesuII3BzvzVr0JqYIgnEeJPwXvpFAo9tNCMH1AqoLSCdStKJugMaIcVJ/sT+Pw9ytIlUO3ccbqbe+BhhsXm9g==}
+    dev: false
 
   /@fontsource/roboto@5.1.1:
     resolution: {integrity: sha512-XwVVXtERDQIM7HPUIbyDe0FP4SRovpjF7zMI8M7pbqFp3ahLJsJTd18h+E6pkar6UbV3btbwkKjYARr5M+SQow==}
