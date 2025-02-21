@@ -3,11 +3,6 @@ import { createTheme, CssBaseline } from "@mui/material";
 import { withThemeFromJSXProvider } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react";
 
-import "@fontsource/noto-sans/300.css";
-import "@fontsource/noto-sans/400.css";
-import "@fontsource/noto-sans/500.css";
-import "@fontsource/noto-sans/700.css";
-
 const lightTheme = createTheme({
   palette: {
     mode: "light",
@@ -22,7 +17,6 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    chromatic: { delay: 1000 },
     layout: "fullscreen",
   },
   decorators: [
