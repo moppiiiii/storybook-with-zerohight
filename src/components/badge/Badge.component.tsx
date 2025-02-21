@@ -4,6 +4,8 @@ import { styled } from "@mui/material/styles";
 
 const StyledBadge = styled(MuiBadge)<BadgeProps>(({ ...props }) => ({
   "& .MuiBadge-badge": {
+    display: "inline-flex",
+    verticalAlign: "middle",
     borderRadius: "100px",
     border: "1px solid #FFF",
 
