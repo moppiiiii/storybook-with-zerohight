@@ -27,7 +27,7 @@ const StyledBadge = styled(MuiBadge)<BadgeProps>(({ ...props }) => ({
           fontFamily: "Noto Sans",
           fontSize: 11,
           fontWeight: 700,
-          lineHeight: 0,
+          lineHeight: 1,
           letterSpacing: 0,
         }),
 
