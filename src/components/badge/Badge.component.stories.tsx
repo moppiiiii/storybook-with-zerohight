@@ -8,7 +8,7 @@ const meta: Meta<typeof BadgeComponent> = {
 	component: BadgeComponent,
 	decorators: [
 		(Story) => (
-			<div style={{height: 100, paddingBlock: 20}}>
+			<div style={{height: 100, paddingBlock: 7}}>
 				<Story />
 			</div>
 		)
